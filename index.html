@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Sopa de Letras - Programação</title>
+  <link rel="stylesheet" href="styles.css">
+  
+</head>
+<body>
+   <h1>Sopa de Letras - Programação</h1>
+
+  <div id="top-bar">
+    <label for="player-name"><strong>Seu nome:</strong></label>
+    <input type="text" id="player-name" placeholder="Digite seu nome">
+    <label for="level-select">Nível:</label>
+    <select id="level-select">
+      <option value="facil">Fácil</option>
+      <option value="medio">Médio</option>
+      <option value="dificil">Difícil</option>
+    </select>
+    <button onclick="startGame()">Iniciar Jogo</button>
+  </div>
+
+  <div id="status">
+    <p><strong>Tempo:</strong> <span id="timer">0</span>s | <strong>Pontuação:</strong> <span id="score">0</span></p>
+  </div>
+
+  <div id="game-area">
+    <div id="grid"></div>
+    <div id="word-list"></div>
+    <div id="ranking"></div>
+  </div>
+<script src="script.js"></script>
+</body>
+</html>
