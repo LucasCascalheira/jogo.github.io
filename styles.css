@@ -149,16 +149,24 @@ button:hover {
     max-width: 300px;
   }
 
-  #grid {
-    grid-template-columns: repeat(10, 28px);
-  }
-
   .cell {
-    width: 28px;
-    height: 28px;
-    font-size: 14px;
-    line-height: 28px;
-  }
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* Layout responsivo */
+#grid {
+  display: grid;
+  grid-template-columns: repeat(14, 1fr);
+  max-width: 100vw;
+  touch-action: none; /* Impede scroll durante o toque */
+}
+
+.cell {
+  width: min(8vw, 40px);
+  height: min(8vw, 40px);
+  font-size: min(5vw, 24px);
+}
 
   #word-list,
   #ranking {
