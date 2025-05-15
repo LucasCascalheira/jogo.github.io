@@ -103,6 +103,11 @@ const definicoes = {
           cell.addEventListener("mousedown", selecionarInicio);
           cell.addEventListener("mouseenter", selecionarArrasto);
           cell.addEventListener("mouseup", selecionarFim);
+
+// NOVOS EVENTOS PARA TOUCH
+            cell.addEventListener("touchstart", selecionarInicioTouch, { passive: false });
+            cell.addEventListener("touchmove", selecionarArrastoTouch, { passive: false });
+            cell.addEventListener("touchend", selecionarFimTouch);
           gridDiv.appendChild(cell);
         }
       }
@@ -207,6 +212,34 @@ const definicoes = {
     for (let cel of selecionadas) cel.classList.remove("selected");
   }
   selecionadas = [];
+}
+function getCellFromTouch(touch) {
+  const target = document.elementFromPoint(touch.clientX, touch.clientY);
+  if (target && target.classList.contains("cell")) return target;
+  return null;
+}
+
+function selecionarInicioTouch(e) {
+  e.preventDefault(); // Impede o scroll
+  const cell = getCellFromTouch(e.touches[0]);
+  if (cell) {
+    selecionadas = [cell];
+    cell.classList.add("selected");
+  }
+}
+
+function selecionarArrastoTouch(e) {
+  e.preventDefault();
+  const cell = getCellFromTouch(e.touches[0]);
+  if (cell && !selecionadas.includes(cell)) {
+    selecionadas.push(cell);
+    cell.classList.add("selected");
+  }
+}
+
+function selecionarFimTouch(e) {
+  e.preventDefault();
+  selecionarFim();
 }
 
     function salvarRanking(nome, pontos, tempo) {
